@@ -1,103 +1,134 @@
 <div>
-    <div class="resume-field d-flex">
-        <label class="text-label" for="Name">
-            Name :
-        </label>
-        <div class="text-value">
-            {{resumeDetails.fullName}}
-        </div>
-    </div>
 
-    <div class="resume-field d-flex">
-        <label class="text-label" for="email">
-            Email :
-        </label>
-        <div class="text-value">
-            {{resumeDetails.email}}
+    <fieldset class="border-radius">
+        <legend>Personal Info</legend>
+        <div class="resume-field d-flex">
+            <label class="text-label" for="Name">
+                Name :
+            </label>
+            <div class="text-value">
+                {{resumeDetails.fullName}}
+            </div>
         </div>
-    </div>
 
-    <div class="resume-field d-flex">
-        <label class="text-label" for="contact">
-            Contact :
-        </label>
-        <div class="text-value">
-            {{resumeDetails.contact}}
+        <div class="resume-field d-flex">
+            <label class="text-label" for="email">
+                Email :
+            </label>
+            <div class="text-value">
+                {{resumeDetails.email}}
+            </div>
         </div>
-    </div>
 
-    <div class="resume-field d-flex">
-        <label class="text-label" for="address">
-            Address :
-        </label>
-        <div class="text-value">
-            {{resumeDetails.address}}
+        <div class="resume-field d-flex">
+            <label class="text-label" for="contact">
+                Contact :
+            </label>
+            <div class="text-value">
+                {{resumeDetails.contact}}
+            </div>
         </div>
-    </div>
 
-    <div>
-        <label>
-            Education Details
-        </label>
+        <div class="resume-field d-flex">
+            <label class="text-label" for="address">
+                Address :
+            </label>
+            <div class="text-value">
+                {{resumeDetails.address}}
+            </div>
+        </div>
+
+        <div class="resume-field d-flex">
+            <label class="text-label" for="address">
+                City :
+            </label>
+            <div class="text-value">
+                {{resumeDetails.city}}
+            </div>
+        </div>
+
+        <div class="resume-field d-flex">
+            <label class="text-label" for="address">
+                State :
+            </label>
+            <div class="text-value">
+                {{resumeDetails.state}}
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="border-radius">
+        <legend>Education Details</legend>
+
         <ng-container *ngFor="let detail of resumeDetails.education">
-            <label class="text-label" for="qualification">
-                Qualification :
-            </label>
-            <div class="text-value">
-                {{detail.qualification}}
+            <div class="resume-field d-flex">
+                <label class="text-label" for="qualification">
+                    Qualification :
+                </label>
+                <div class="text-value">
+                    {{detail.qualification}}
+                </div>
             </div>
-
-            <label class="text-label" for="instituion">
-                Instituion Name :
-            </label>
-            <div class="text-value">
-                {{detail.instituion}}
+            <div class="resume-field d-flex">
+                <label class="text-label" for="instituion">
+                    Instituion Name :
+                </label>
+                <div class="text-value">
+                    {{detail.instituion}}
+                </div>
             </div>
-
-            <label class="text-label" for="passingYear">
-                Year of Passing :
-            </label>
-            <div class="text-value">
-                {{detail.passingYear}}
+            <div class="resume-field d-flex">
+                <label class="text-label" for="passingYear">
+                    Year of Passing :
+                </label>
+                <div class="text-value">
+                    {{detail.passingYear}}
+                </div>
             </div>
         </ng-container>
-    </div>
-    <div class="resume-field d-flex">
-        <label class="text-label" for="email">
-            Skills :
-        </label>
-        <div class="text-value">
-            {{resumeDetails.skills}}
-        </div>
-    </div>
-    <div>
-        <label>
-            Experience Details
-        </label>
+    </fieldset>
+
+    <fieldset class="border-radius">
+        <legend>Experience</legend>
         <ng-container *ngFor="let detail of resumeDetails.experience">
-            <label class="text-label" for="company">
-                Company :
-            </label>
-            <div class="text-value">
-                {{detail.company}}
+            <div class="resume-field d-flex">
+                <label class="text-label" for="company">
+                    Company :
+                </label>
+                <div class="text-value">
+                    {{detail.company}}
+                </div>
             </div>
-
-            <label class="text-label" for="description">
-                Description :
-            </label>
-            <div class="text-value">
-                {{detail.description}}
+            <div class="resume-field d-flex">
+                <label class="text-label" for="description">
+                    Description :
+                </label>
+                <div class="text-value">
+                    {{detail.description}}
+                </div>
             </div>
         </ng-container>
-    </div>
-
-    <div class="resume-field d-flex">
-        <label class="text-label" for="Name">
-            Cover Letter :
-        </label>
-        <div class="text-value">
-            {{resumeDetails.coverLetter}}
+    </fieldset>
+    <fieldset class="border-radius">
+        <legend>Skills</legend>
+        <div class="resume-field d-flex">
+            <label class="text-label" for="email">
+                Skills :
+            </label>
+            <div class="text-value">
+                {{resumeDetails.skills}}
+            </div>
         </div>
-    </div>
+    </fieldset>
+    <fieldset class="border-radius">
+        <legend>Coverletter</legend>
+        <div class="resume-field d-flex">
+            <label class="text-label" for="Name">
+                Cover Letter :
+            </label>
+            <div class="text-value">
+                {{resumeDetails.coverLetter}}
+            </div>
+        </div>
+    </fieldset>
     <button mat-raised-button color="primary" mat-button matStepperPrevious>Back</button>
 </div>

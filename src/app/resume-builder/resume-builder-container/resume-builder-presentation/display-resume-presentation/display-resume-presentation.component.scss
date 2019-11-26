@@ -3,8 +3,25 @@
 }
 .text-label{
     color: darken(#ccc,20%);
-    width: 100px;
+    width: 150px;
 }
 .text-value{
      color: black;
+}
+.resume-field{
+    margin-bottom: 13px;
+}
+.border-radius{
+    border-radius: 5px;
+}
+fieldset{
+    margin-bottom: 15px;
+    border: 1px solid #673ab7;
+    padding: 10px;
+}
+legend{
+    text-transform: uppercase;
+    color: #673ab7;
+    padding: 0 5px;
+    font-weight: 500;
 }
