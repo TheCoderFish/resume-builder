@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { ResumeBuilderPresenter } from '../resume-builder-presenter/resume-builder-presenter.service';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import { ResumeDetails } from '../../resume-detail.model';
 
 @Component({
   selector: 'resume-builder-presentation-ui',
@@ -11,31 +12,43 @@ import { FormGroup, FormArray, FormControl } from '@angular/forms';
 })
 export class ResumeBuilderPresentationComponent implements OnInit {
 
+  @Input() public set cities(value: string[]) {
+    if (value) {
+      this._cities = value;
+    }
+  }
+
+  public get cities() {
+    return this._cities;
+  }
+
+  @Input() public set states(value: string[]) {
+    if (value) {
+      this._states = value;
+    }
+  }
+
+  public get states() {
+    return this._states;
+  }
+
+  @Output()
+  public saveResumeDetails: EventEmitter<ResumeDetails>;
+
   public resumeForm: FormGroup;
 
-  constructor(private resumeBuilderPresenter: ResumeBuilderPresenter) { }
+  private _cities: string[];
+  private _states: string[];
+
+  constructor(private resumeBuilderPresenter: ResumeBuilderPresenter) {
+    this.saveResumeDetails = new EventEmitter<ResumeDetails>();
+  }
 
   ngOnInit() {
     this.resumeForm = this.resumeBuilderPresenter.buildForm();
 
-    this.resumeForm.valueChanges.pipe().subscribe(x => {
-      console.log(this.resumeForm);
-    });
-
-
-    this.resumeForm.patchValue({
-      fullName: 'Nurali Khoja',
-      email: 'nuralikhoja@gmail.com',
-      contact: '1234',
-      address: 'Umbergaon Gujarat',
-      education: [{}],
-      skills: 'programming',
-      experience: [{
-        qualification: 'X',
-        instituion: 'MBBI',
-        passingYear: '2011'
-      }],
-      coverLetter: 'Cover letter'
+    this.resumeBuilderPresenter.saveResumeDetails$.subscribe((resumeDetails: ResumeDetails) => {
+      this.saveResumeDetails.emit(resumeDetails);
     });
   }
 
@@ -77,8 +90,12 @@ export class ResumeBuilderPresentationComponent implements OnInit {
     return this.resumeForm.get('experience') as FormArray;
   }
 
-  public onSubmit() {
-    console.log(this.resumeForm.value);
+  public get state() {
+    return this.resumeForm.get('state') as FormControl;
+  }
+
+  public saveResume() {
+    this.resumeBuilderPresenter.saveResume(this.resumeForm);
   }
 
   public resetForm() {

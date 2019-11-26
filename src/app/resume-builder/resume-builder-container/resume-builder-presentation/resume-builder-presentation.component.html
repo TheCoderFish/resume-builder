@@ -2,7 +2,7 @@
   <mat-step label="Build Your Resume" [stepControl]="resumeForm">
     <!-- form 1 -->
     <div class="container">
-      <form novalidate [formGroup]="resumeForm" (ngSubmit)="onSubmit()" class="form">
+      <form novalidate [formGroup]="resumeForm" class="form">
 
         <mat-form-field class="full-width">
           <input matInput placeholder="Enter Your Full name" formControlName="fullName" required>
@@ -28,6 +28,27 @@
           <mat-error *ngIf="address.hasError('required')">Address Is Required</mat-error>
           <mat-error *ngIf="address.hasError('maxlength')">Address should not be above 250 characters</mat-error>
         </mat-form-field>
+
+
+        <mat-form-field class="full-width">
+          <mat-label>Choose State</mat-label>
+          <mat-select formControlName="state">
+            <ng-container *ngFor="let s of states;let i=index">
+              <mat-option value="{{s}}"> {{s}}</mat-option>
+            </ng-container>
+          </mat-select>
+          <mat-error *ngIf="state.hasError('required')">State Is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" *ngIf="state">
+          <mat-label>Choose city</mat-label>
+          <mat-select formControlName="city">
+            <ng-container *ngFor="let c of cities;let i=index">
+              <mat-option value="{{c}}"> {{c}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+
 
         <mat-form-field class="full-width">
           <input matInput placeholder="Enter Relevant Skill" formControlName="skills" />
@@ -91,9 +112,10 @@
         <!-- End Education Details-->
 
         <div class="spacer">
-          <button mat-raised-button color="primary" (click)="resetForm()">Reset</button>
-          <button mat-raised-button color="primary" mat-button matStepperNext
-            [disabled]="resumeForm.invalid">Next</button>
+          <button mat-raised-button color="primary" (click)="saveResume()">Save Resume</button>
+          <button mat-raised-button color="warn" (click)="resetForm()">Reset</button>
+          <button mat-raised-button mat-button matStepperNext [disabled]="resumeForm.invalid">Preview
+            Resume</button>
         </div>
 
       </form>

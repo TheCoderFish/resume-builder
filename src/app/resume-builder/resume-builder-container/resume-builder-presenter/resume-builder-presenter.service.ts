@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
+import { Subject, Observable } from 'rxjs';
+import { ResumeDetails } from '../../resume-detail.model';
 
 @Injectable()
 export class ResumeBuilderPresenter {
 
-  constructor(private fb: FormBuilder) { }
+  private saveResumeDetails: Subject<any>;
+  public saveResumeDetails$: Observable<any>;
+
+  constructor(private fb: FormBuilder) {
+    this.saveResumeDetails = new Subject<any>();
+    this.saveResumeDetails$ = this.saveResumeDetails.asObservable();
+  }
 
   public buildForm() {
     return this.fb.group({
@@ -12,6 +20,8 @@ export class ResumeBuilderPresenter {
       email: ['', [Validators.required, Validators.email]],
       contact: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       address: ['', [Validators.required, Validators.maxLength(250)]],
+      state: ['', [Validators.required]],
+      city: [''],
       education: this.fb.array([]),
       skills: [''],
       experience: this.fb.array([]),
@@ -41,5 +51,13 @@ export class ResumeBuilderPresenter {
 
   public addExperience(experienceDetails: FormArray) {
     experienceDetails.push(this.getExperienceForm());
+  }
+
+  public saveResume(form: FormGroup) {
+    if (form.valid) {
+      let resumeDetails: ResumeDetails = new ResumeDetails();
+      resumeDetails = form.getRawValue();
+      this.saveResumeDetails.next(resumeDetails);
+    }
   }
 }

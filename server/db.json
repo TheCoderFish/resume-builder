@@ -1,0 +1,49 @@
+{
+  "cities": [
+    "City 1",
+    "City 2"
+  ],
+  "states": [
+    "State 1",
+    "State 2"
+  ],
+  "resume": [
+    {
+      "fullName": "Nurali Khoja",
+      "email": "nuralikhoja@gmail.com",
+      "contact": "1234",
+      "address": "Umbergaon Gujarat",
+      "state": "State 2",
+      "city": "City 1",
+      "education": [],
+      "skills": "programming",
+      "experience": [],
+      "coverLetter": "Cover letter",
+      "id": 1
+    },
+    {
+      "fullName": "Nurali Khoja",
+      "email": "nuralikhoja@gmail.com",
+      "contact": "1234",
+      "address": "Umbergaon Gujarat",
+      "state": "State 2",
+      "city": "City 1",
+      "education": [
+        {
+          "qualification": "x",
+          "instituion": "mbbi",
+          "passingYear": "1111"
+        }
+      ],
+      "skills": "programming",
+      "experience": [
+        {
+          "company": "grwe",
+          "description": "fwf"
+        }
+      ],
+      "coverLetter": "Cover letter",
+      "id": 2
+    }
+  ]
+}

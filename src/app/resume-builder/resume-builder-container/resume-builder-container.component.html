@@ -1,1 +1,3 @@
-<resume-builder-presentation-ui></resume-builder-presentation-ui>
+<resume-builder-presentation-ui [cities]="cities$ | async"
+                                [states]="states$ | async"
+                                (saveResumeDetails)="saveResumeDetails($event)"></resume-builder-presentation-ui>
