@@ -1,3 +1,99 @@
-<p>
-  resume-builder-presentation works!
-</p>
+<mat-horizontal-stepper linear>
+  <mat-step label="Build Your Resume" [stepControl]="resumeForm">
+    <!-- form 1 -->
+    <div class="container">
+      <form novalidate [formGroup]="resumeForm" (ngSubmit)="onSubmit()" class="form">
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Enter Your Full name" formControlName="fullName" required>
+          <mat-hint>FirstName MiddleName LastName</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Enter Email" formControlName="email" required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Enter Contact" formControlName="contact" required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Enter Contact" formControlName="address" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Enter Relevant Skill" formControlName="skills" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput formControlName="coverLetter" />
+        </mat-form-field>
+
+        <!-- Education Details-->
+        <ng-container *ngIf="education.length">
+          <div formArrayName="education">
+            <ng-container *ngFor="let edu of education.controls;let i=index">
+              <div [formGroupName]="i">
+                <mat-form-field class="full-width">
+                  <mat-label>Qualification</mat-label>
+                  <input matInput placeholder="Acquired Degree/Honours" formControlName="qualification">
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                  <mat-label>Instituion Full Name</mat-label>
+                  <input matInput placeholder="Enter Name of Your College/School" formControlName="instituion">
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                  <mat-label>Year of Passing</mat-label>
+                  <input matInput placeholder="Enter Year of Completion" formControlName="passingYear">
+                </mat-form-field>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+        <button mat-raised-button type="button" #addCity (click)="addEducation()">Add
+          Education</button>
+        <div class="spacer"></div>
+        <!-- End Education Details-->
+
+        <!-- Experience Details-->
+        <ng-container *ngIf="experience.length">
+          <div formArrayName="experience">
+            <ng-container *ngFor="let exp of experience.controls;let i=index">
+              <div [formGroupName]="i">
+                <mat-form-field class="full-width">
+                  <mat-label>Company</mat-label>
+                  <input matInput placeholder="Enter Company Name" formControlName="company">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput placeholder="Enter Contact" formControlName="description"></textarea>
+                </mat-form-field>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+        <button mat-raised-button type="button" #addCity (click)="addExperience()">Add
+          Experience</button>
+        <div class="spacer"></div>
+        <!-- End Education Details-->
+
+        <!-- 
+      <button mat-raised-button type="button" #addCity (click)="addCityAddress()" [disabled]="businessData.invalid">Add
+        Business Address</button>
+      <ng-container *ngIf="addresses.length">
+        <button mat-raised-button color="warn" type="button" (click)="removeCity()">Remove City</button>
+      </ng-container>
+      -->
+        <!--    <div class="spacer">
+        <button mat-raised-button color="primary" mat-button matStepperNext>Next</button>
+      </div> -->
+
+      </form>
+    </div>
+  </mat-step>
+  <mat-step label="Business Domains">
+    <!-- form 2 -->
+  </mat-step>
+</mat-horizontal-stepper>

@@ -6,12 +6,15 @@ import { MaterialModule } from '../shared/material/material.module';
 import { ResumeBuilderContainerComponent } from './resume-builder-container/resume-builder-container.component';
 import { ResumeBuilderPresentationComponent } from './resume-builder-container/resume-builder-presentation/resume-builder-presentation.component';
 import { ResumeBuilderService } from './resume-builder.service';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [ResumeBuilderContainerComponent, ResumeBuilderPresentationComponent],
   imports: [
     CommonModule,
     ResumeBuilderRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ResumeBuilderService
