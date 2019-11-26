@@ -1,1 +1,103 @@
-{{resumeDetails | json}}
+<div>
+    <div class="resume-field d-flex">
+        <label class="text-label" for="Name">
+            Name :
+        </label>
+        <div class="text-value">
+            {{resumeDetails.fullName}}
+        </div>
+    </div>
+
+    <div class="resume-field d-flex">
+        <label class="text-label" for="email">
+            Email :
+        </label>
+        <div class="text-value">
+            {{resumeDetails.email}}
+        </div>
+    </div>
+
+    <div class="resume-field d-flex">
+        <label class="text-label" for="contact">
+            Contact :
+        </label>
+        <div class="text-value">
+            {{resumeDetails.contact}}
+        </div>
+    </div>
+
+    <div class="resume-field d-flex">
+        <label class="text-label" for="address">
+            Address :
+        </label>
+        <div class="text-value">
+            {{resumeDetails.address}}
+        </div>
+    </div>
+
+    <div>
+        <label>
+            Education Details
+        </label>
+        <ng-container *ngFor="let detail of resumeDetails.education">
+            <label class="text-label" for="qualification">
+                Qualification :
+            </label>
+            <div class="text-value">
+                {{detail.qualification}}
+            </div>
+
+            <label class="text-label" for="instituion">
+                Instituion Name :
+            </label>
+            <div class="text-value">
+                {{detail.instituion}}
+            </div>
+
+            <label class="text-label" for="passingYear">
+                Year of Passing :
+            </label>
+            <div class="text-value">
+                {{detail.passingYear}}
+            </div>
+        </ng-container>
+    </div>
+    <div class="resume-field d-flex">
+        <label class="text-label" for="email">
+            Skills :
+        </label>
+        <div class="text-value">
+            {{resumeDetails.skills}}
+        </div>
+    </div>
+    <div>
+        <label>
+            Experience Details
+        </label>
+        <ng-container *ngFor="let detail of resumeDetails.experience">
+            <label class="text-label" for="company">
+                Company :
+            </label>
+            <div class="text-value">
+                {{detail.company}}
+            </div>
+
+            <label class="text-label" for="description">
+                Description :
+            </label>
+            <div class="text-value">
+                {{detail.description}}
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="resume-field d-flex">
+        <label class="text-label" for="Name">
+            Cover Letter :
+        </label>
+        <div class="text-value">
+            {{resumeDetails.coverLetter}}
+        </div>
+    </div>
+    <button mat-raised-button color="primary" mat-button matStepperPrevious>Back</button>
+</div>

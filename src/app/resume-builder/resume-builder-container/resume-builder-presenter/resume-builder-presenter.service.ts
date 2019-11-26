@@ -23,7 +23,7 @@ export class ResumeBuilderPresenter {
     return this.fb.group({
       qualification: [''],
       instituion: [''],
-      passingYear: ['', [Validators.pattern('^\d{4}$')]]
+      passingYear: ['', [Validators.pattern('^[12][0-9]{3}$')]]
     })
   }
 

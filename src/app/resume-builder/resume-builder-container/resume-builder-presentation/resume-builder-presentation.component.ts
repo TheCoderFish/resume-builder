@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ResumeBuilderPresenter } from '../resume-builder-presenter/resume-builder-presenter.service';
-import { FormGroup, FormArray } from '@angular/forms';
+import { FormGroup, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'resume-builder-presentation-ui',
@@ -43,9 +43,30 @@ export class ResumeBuilderPresentationComponent implements OnInit {
     const educationDetails: FormArray = this.resumeForm.get('education') as FormArray;
     this.resumeBuilderPresenter.addEducation(educationDetails);
   }
+
+  public removeEducation() {
+    this.education.removeAt(this.education.length - 1);
+  }
   public addExperience() {
     const experienceDetails: FormArray = this.resumeForm.get('experience') as FormArray;
     this.resumeBuilderPresenter.addExperience(experienceDetails);
+  }
+
+  public removeExperience() {
+    this.experience.removeAt(this.experience.length - 1);
+  }
+
+  public get fullName() {
+    return this.resumeForm.get('fullName') as FormControl;
+  }
+  public get email() {
+    return this.resumeForm.get('email') as FormControl;
+  }
+  public get address() {
+    return this.resumeForm.get('address') as FormControl;
+  }
+  public get contact() {
+    return this.resumeForm.get('contact') as FormControl;
   }
 
   public get education() {
@@ -58,6 +79,10 @@ export class ResumeBuilderPresentationComponent implements OnInit {
 
   public onSubmit() {
     console.log(this.resumeForm.value);
+  }
+
+  public resetForm() {
+    this.resumeForm.reset();
   }
 
 }
