@@ -1,4 +1,4 @@
-<mat-horizontal-stepper linear>
+<mat-horizontal-stepper>
   <mat-step label="Build Your Resume" [stepControl]="resumeForm">
     <!-- form 1 -->
     <div class="container">
@@ -18,7 +18,7 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Enter Contact" formControlName="address" required></textarea>
+          <textarea matInput placeholder="Enter Address" formControlName="address" required></textarea>
         </mat-form-field>
 
         <mat-form-field class="full-width">
@@ -26,6 +26,7 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
+          <mat-label>Cover Letter</mat-label>
           <input matInput formControlName="coverLetter" />
         </mat-form-field>
 
@@ -79,21 +80,15 @@
         <div class="spacer"></div>
         <!-- End Education Details-->
 
-        <!-- 
-      <button mat-raised-button type="button" #addCity (click)="addCityAddress()" [disabled]="businessData.invalid">Add
-        Business Address</button>
-      <ng-container *ngIf="addresses.length">
-        <button mat-raised-button color="warn" type="button" (click)="removeCity()">Remove City</button>
-      </ng-container>
-      -->
-        <!--    <div class="spacer">
-        <button mat-raised-button color="primary" mat-button matStepperNext>Next</button>
-      </div> -->
+        <div class="spacer">
+          <button mat-raised-button color="primary" mat-button matStepperNext
+            [disabled]="resumeForm.invalid">Next</button>
+        </div>
 
       </form>
     </div>
   </mat-step>
-  <mat-step label="Business Domains">
-    <!-- form 2 -->
+  <mat-step label="Checkout Your Resume">
+    <display-resume-presentation-ui [resumeDetails]="resumeForm.value"></display-resume-presentation-ui>
   </mat-step>
 </mat-horizontal-stepper>

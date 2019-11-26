@@ -7,8 +7,9 @@ import { ResumeBuilderContainerComponent } from './resume-builder-container/resu
 import { ResumeBuilderPresentationComponent } from './resume-builder-container/resume-builder-presentation/resume-builder-presentation.component';
 import { ResumeBuilderService } from './resume-builder.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DisplayResumePresentationComponent } from './resume-builder-container/resume-builder-presentation/display-resume-presentation/display-resume-presentation.component';
 @NgModule({
-  declarations: [ResumeBuilderContainerComponent, ResumeBuilderPresentationComponent],
+  declarations: [ResumeBuilderContainerComponent, ResumeBuilderPresentationComponent, DisplayResumePresentationComponent],
   imports: [
     CommonModule,
     ResumeBuilderRoutingModule,

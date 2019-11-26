@@ -19,7 +19,23 @@ export class ResumeBuilderPresentationComponent implements OnInit {
     this.resumeForm = this.resumeBuilderPresenter.buildForm();
 
     this.resumeForm.valueChanges.pipe().subscribe(x => {
-      console.log(this.resumeForm.value);
+      console.log(this.resumeForm);
+    });
+
+
+    this.resumeForm.patchValue({
+      fullName: 'Nurali Khoja',
+      email: 'nuralikhoja@gmail.com',
+      contact: '1234',
+      address: 'Umbergaon Gujarat',
+      education: [{}],
+      skills: 'programming',
+      experience: [{
+        qualification: 'X',
+        instituion: 'MBBI',
+        passingYear: '2011'
+      }],
+      coverLetter: 'Cover letter'
     });
   }
 
@@ -32,12 +48,16 @@ export class ResumeBuilderPresentationComponent implements OnInit {
     this.resumeBuilderPresenter.addExperience(experienceDetails);
   }
 
-  public get education(){
+  public get education() {
     return this.resumeForm.get('education') as FormArray;
   }
 
-  public get experience(){
+  public get experience() {
     return this.resumeForm.get('experience') as FormArray;
+  }
+
+  public onSubmit() {
+    console.log(this.resumeForm.value);
   }
 
 }

@@ -8,7 +8,7 @@ export class ResumeBuilderPresenter {
 
   public buildForm() {
     return this.fb.group({
-      fullName: ['', [Validators.required, Validators.pattern('^[a-zA-Z+$]')]],
+      fullName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       email: ['', [Validators.required, Validators.email]],
       contact: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       address: ['', [Validators.required, Validators.maxLength(250)]],
