@@ -30,6 +30,14 @@
         </mat-form-field>
 
 
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+          <mat-radio-button value="m">Male</mat-radio-button>
+          <mat-radio-button value="f">Female</mat-radio-button>
+          <mat-radio-button value="o">Other</mat-radio-button>
+          <mat-error *ngIf="gender.hasError('required') && gender.touched">Please Select A Valid Option</mat-error>
+        </mat-radio-group>
+
+
         <mat-form-field class="full-width">
           <mat-label>Choose State</mat-label>
           <mat-select formControlName="state">
@@ -40,7 +48,7 @@
           <mat-error *ngIf="state.hasError('required')">State Is Required</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="full-width" *ngIf="state">
+        <mat-form-field class="full-width" *ngIf="state.value">
           <mat-label>Choose city</mat-label>
           <mat-select formControlName="city">
             <ng-container *ngFor="let c of cities;let i=index">

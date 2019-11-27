@@ -1,7 +1,8 @@
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatInputModule, MatSelectModule, MatStepperModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatSelectModule, MatStepperModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -13,7 +14,8 @@ import { MatButtonModule, MatInputModule, MatSelectModule, MatStepperModule } fr
     MatStepperModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }

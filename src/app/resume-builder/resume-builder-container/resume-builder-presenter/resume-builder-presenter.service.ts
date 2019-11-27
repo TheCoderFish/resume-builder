@@ -20,6 +20,7 @@ export class ResumeBuilderPresenter {
       email: ['', [Validators.required, Validators.email]],
       contact: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       address: ['', [Validators.required, Validators.maxLength(250)]],
+      gender: ['', [Validators.required]],
       state: ['', [Validators.required]],
       city: [''],
       education: this.fb.array([]),

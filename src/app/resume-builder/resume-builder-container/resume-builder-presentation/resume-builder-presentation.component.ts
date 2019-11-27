@@ -50,6 +50,8 @@ export class ResumeBuilderPresentationComponent implements OnInit {
     this.resumeBuilderPresenter.saveResumeDetails$.subscribe((resumeDetails: ResumeDetails) => {
       this.saveResumeDetails.emit(resumeDetails);
     });
+
+    this.resumeForm.valueChanges.subscribe(x => console.log(this.resumeForm));
   }
 
   public addEducation() {
@@ -92,6 +94,10 @@ export class ResumeBuilderPresentationComponent implements OnInit {
 
   public get state() {
     return this.resumeForm.get('state') as FormControl;
+  }
+
+  public get gender() {
+    return this.resumeForm.get('gender') as FormControl;
   }
 
   public saveResume() {
