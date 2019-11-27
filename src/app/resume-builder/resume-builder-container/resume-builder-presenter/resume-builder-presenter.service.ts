@@ -61,4 +61,30 @@ export class ResumeBuilderPresenter {
       this.saveResumeDetails.next(resumeDetails);
     }
   }
+
+
+  /*
+  fromEvent(textbox, 'keyup').pipe(
+    //map(event => (<HTMLTextAreaElement>event.target).value.toLowerCase()),
+    tap(console.log),
+    pluck('target','value'),
+    tap(console.log),
+    tap(() => display.innerHTML = ''),
+    filter((text: string) => text.length > 2),
+    //automatically subscribes to the inner observable
+    mergeMap(val => from(STATE_LIST).pipe(
+        map(state => state.toLowerCase()),
+        filter(state => state.includes(val)),
+        map(state => state.split(val).join(`<b>${val}</b>`)),
+        reduce((acc, curr) => acc.concat(curr), []),
+
+    )
+    ),
+).subscribe((filteredList: string[]) => {
+    filteredList.forEach((state: string) => {
+        display.innerHTML += `${state} <br>`;
+    })
+});
+
+   */
 }

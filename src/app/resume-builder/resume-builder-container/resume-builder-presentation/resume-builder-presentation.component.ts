@@ -51,20 +51,27 @@ export class ResumeBuilderPresentationComponent implements OnInit {
       this.saveResumeDetails.emit(resumeDetails);
     });
 
+    this.resumeForm.patchValue({
+      fullName:'Nurali K',
+      email:'nur@g.com',
+      gender:'m',
+      contact:'1234',
+      address:'aaaaaa',
+      
+    })
+
     this.resumeForm.valueChanges.subscribe(x => console.log(this.resumeForm));
   }
 
   public addEducation() {
-    const educationDetails: FormArray = this.resumeForm.get('education') as FormArray;
-    this.resumeBuilderPresenter.addEducation(educationDetails);
+    this.resumeBuilderPresenter.addEducation(this.education);
   }
 
   public removeEducation() {
     this.education.removeAt(this.education.length - 1);
   }
   public addExperience() {
-    const experienceDetails: FormArray = this.resumeForm.get('experience') as FormArray;
-    this.resumeBuilderPresenter.addExperience(experienceDetails);
+    this.resumeBuilderPresenter.addExperience(this.experience);
   }
 
   public removeExperience() {

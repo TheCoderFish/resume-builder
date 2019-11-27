@@ -56,7 +56,7 @@
             </div>
         </div>
     </fieldset>
-    <fieldset class="border-radius">
+    <fieldset class="border-radius" *ngIf="resumeDetails.education.length">
         <legend>Education Details</legend>
 
         <ng-container *ngFor="let detail of resumeDetails.education">
@@ -87,7 +87,7 @@
         </ng-container>
     </fieldset>
 
-    <fieldset class="border-radius">
+    <fieldset class="border-radius" *ngIf="resumeDetails.experience.length">
         <legend>Experience</legend>
         <ng-container *ngFor="let detail of resumeDetails.experience">
             <div class="resume-field d-flex">
